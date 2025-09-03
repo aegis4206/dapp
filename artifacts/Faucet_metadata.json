@@ -1,0 +1,75 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "requestTokens",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contract/Faucet.sol": "Faucet"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contract/Faucet.sol": {
+			"keccak256": "0x12b8043af08a31b4ea47971fea4bbf089a9a69e2dd2684c09d23c71f082de8f8",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e5a9f309a46100fa2e1249cce444c8d9c44167750f4efed8393b5b3c90d78ec6",
+				"dweb:/ipfs/QmWu9LGAiyQQnGsi1FCfqBFj8kDFikEdeQZi3paCRNJ4kR"
+			]
+		}
+	},
+	"version": 1
+}
