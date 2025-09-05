@@ -19,3 +19,15 @@
 =============== Sep 3, 2025 (CST) ===============
 14:10:37.303590 db@close closing
 14:10:37.303590 db@close done T·0s
+=============== Sep 5, 2025 (CST) ===============
+15:47:52.295968 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+15:47:52.302650 version@stat F·[1] S·181B[181B] Sc·[0.25]
+15:47:52.302650 db@open opening
+15:47:52.302650 journal@recovery F·1
+15:47:52.303162 journal@recovery recovering @3
+15:47:52.309697 memdb@flush created L0@5 N·1 S·162B "loc..seq,v4":"loc..seq,v4"
+15:47:52.310737 version@stat F·[2] S·343B[343B] Sc·[0.50]
+15:47:52.318647 db@janitor F·4 G·0
+15:47:52.318647 db@open done T·15.9976ms
+17:32:04.303168 db@close closing
+17:32:04.303168 db@close done T·0s
