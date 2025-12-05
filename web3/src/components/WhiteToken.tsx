@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import Web3, { Contract } from "web3";
-import type { AbiItem, Numbers } from "web3";
+import type { AbiItem, EventLog, Numbers } from "web3";
 
 
 const faucetAddress = "0x537e697c7AB75A26f9ECF0Ce810e3154dFcaaf44";
@@ -147,7 +147,8 @@ export default function WhiteToken() {
     const [balance, setBalance] = useState<string>("");
     const [recipient, setRecipient] = useState<string>("");
     const [amount, setAmount] = useState<string>("0");
-    const [pastLogs, setPastLogs] = useState<string[]>([]);
+    const [pastLogs, setPastLogs] = useState<EventLog[]>([]);
+    const [totalSupply, setTotalSupply] = useState<string>("");
 
     // 連接 MetaMask
     const connectWallet = async () => {
@@ -160,9 +161,14 @@ export default function WhiteToken() {
 
                 const accounts = await web3Instance.eth.getAccounts();
                 setAccount(accounts[0]);
+                // 合約持有人地址
+                // setAccount("0x71562b71999873DB5b286dF957af199Ec94617F7");
 
                 const contractInstance = new web3Instance.eth.Contract(faucetABI, faucetAddress);
                 setContract(contractInstance);
+
+                const totalSupply = await contractInstance.methods.totalSupply().call();
+                setTotalSupply(web3Instance.utils.fromWei(totalSupply as unknown as string, "ether"));
 
                 setStatus("已連接 MetaMask");
             } catch (error) {
@@ -180,8 +186,17 @@ export default function WhiteToken() {
             fromBlock: 0,   // 從創世區塊開始
             toBlock: "latest"
         });
-        console.log(pastEvents);
-        setPastLogs(pre => [...pre, ...(pastEvents as string[])]);
+        // console.log(pastEvents);
+        const even = (pastEvents as EventLog[]).map(log => {
+            return {
+                ...log,
+                returnValues: {
+                    ...log.returnValues,
+                    value: web3.utils.fromWei(String(log.returnValues?.value ?? "0"), "ether")
+                }
+            };
+        });
+        setPastLogs(even);
     }
 
     useEffect(() => {
@@ -232,6 +247,7 @@ export default function WhiteToken() {
             <Typography className="!mb-2">帳號: {account || "尚未連接"}</Typography>
             <Typography className="mb-2">餘額: {balance} MTK</Typography>
             <Typography className="!mb-4">狀態: {status}</Typography>
+            <Typography className="!mb-4">總數: {totalSupply} MTK</Typography>
             <Box className="mb-4">
                 <Button
                     onClick={connectWallet}
@@ -279,13 +295,13 @@ export default function WhiteToken() {
                 {pastLogs.map((log, index) => (
                     <Box key={index} sx={{ border: "1px solid #fff", padding: "10px", marginBottom: "10px" }}>
                         <Typography variant="body2">
-                            address from: {log.returnValues?.[0]}
+                            address from: {String(log.returnValues?.[0] ?? "")}
                         </Typography>
                         <Typography variant="body2">
-                            address to: {log.returnValues?.[1]}
+                            address to: {String(log.returnValues?.[1] ?? "")}
                         </Typography>
                         <Typography variant="body2">
-                            value: {log.returnValues?.value}
+                            value: {String(log.returnValues?.value ?? "")}
                         </Typography>
                     </Box>
                 ))
