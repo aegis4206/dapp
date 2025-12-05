@@ -3,6 +3,7 @@ import './App.css'
 import Faucet from './components/Faucet'
 import WhiteToken from './components/WhiteToken'
 import { useState } from 'react';
+import Voting from './components/Voting';
 
 function App() {
   const [value, setValue] = useState('Faucet');
@@ -23,11 +24,13 @@ function App() {
             label="Faucet"
           />
           <Tab value="WhiteToken" label="White Token" />
+          <Tab value="Voting" label="Voting" />
         </Tabs>
       </Box>
       <Box display="flex" justifyContent="center" alignItems="center" flexGrow={1} bgcolor={"#f0f0f0"}>
         {value === "Faucet" && <Faucet />}
         {value === "WhiteToken" && <WhiteToken />}
+        {value === "Voting" && <Voting />}
       </Box>
     </Box>
   )

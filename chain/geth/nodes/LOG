@@ -90,3 +90,15 @@
 =============== Dec 5, 2025 (CST) ===============
 15:52:56.088940 db@close closing
 15:52:56.089553 db@close done T·612.9µs
+=============== Dec 5, 2025 (CST) ===============
+15:57:29.517068 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+15:57:29.529489 version@stat F·[2 1] S·505B[324B 181B] Sc·[0.50 0.00]
+15:57:29.529489 db@open opening
+15:57:29.529489 journal@recovery F·1
+15:57:29.530495 journal@recovery recovering @19
+15:57:29.538731 memdb@flush created L0@21 N·1 S·162B "loc..seq,v14":"loc..seq,v14"
+15:57:29.539757 version@stat F·[3 1] S·667B[486B 181B] Sc·[0.75 0.00]
+15:57:29.546554 db@janitor F·6 G·0
+15:57:29.546554 db@open done T·17.064ms
+17:29:46.097694 db@close closing
+17:29:46.097694 db@close done T·0s
